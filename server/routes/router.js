@@ -43,4 +43,18 @@ router.get("/getdata", async (req, res) => {
   }
 });
 
+// get individual user data
+router.get("/getdata/:id", async (req, res) => {
+  try {
+    // console.log(req.params);
+    const { id } = req.params;
+    const userindividual = await users.findById({ _id: id });
+    console.log(userindividual);
+    res.status(201).json(userindividual);
+  } catch (error) {
+    res.status(404).send(error);
+    // res.status(404).send("Not found");
+  }
+});
+
 module.exports = router;
