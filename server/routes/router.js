@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const users = require("../models/userSchema");
 
-router.get("/", (req, res) => {
-  console.log("connect");
-});
+// router.get("/", (req, res) => {
+//   console.log("connect");
+// });
 
 router.post("/register", async (req, res) => {
   //   console.log(req.body);
@@ -29,6 +29,17 @@ router.post("/register", async (req, res) => {
     }
   } catch (error) {
     res.status(404).send(error);
+  }
+});
+
+// get user data
+router.get("/getdata", async (req, res) => {
+  try {
+    const userdata = await users.find();
+    res.status(201).json(userdata);
+    console.log(userdata);
+  } catch (error) {
+    res.status(404).json(error);
   }
 });
 
