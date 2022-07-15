@@ -6,11 +6,12 @@ const users = require("../models/userSchema");
 //   console.log("connect");
 // });
 
+// registeration
 router.post("/register", async (req, res) => {
   //   console.log(req.body);
   const { name, email, mobile } = req.body;
   if (!name || !email || !mobile) {
-    res.status(404).send("please fill the data");
+    res.status(422).send("please fill the data");
   }
   try {
     // if user is available
@@ -18,7 +19,7 @@ router.post("/register", async (req, res) => {
     const preuser = await users.findOne({ email: email });
     console.log(preuser);
     if (preuser) {
-      res.status(404).send("this user is already present!");
+      res.status(422).send("this user is already present!");
     } else {
       // if user is first time filling the data
       const adduser = new users({ name, email, mobile });
@@ -28,7 +29,7 @@ router.post("/register", async (req, res) => {
       console.log(adduser);
     }
   } catch (error) {
-    res.status(404).send(error);
+    res.status(422).send(error);
   }
 });
 
@@ -39,7 +40,7 @@ router.get("/getdata", async (req, res) => {
     res.status(201).json(userdata);
     console.log(userdata);
   } catch (error) {
-    res.status(404).json(error);
+    res.status(422).json(error);
   }
 });
 
@@ -52,8 +53,22 @@ router.get("/getdata/:id", async (req, res) => {
     console.log(userindividual);
     res.status(201).json(userindividual);
   } catch (error) {
-    res.status(404).send(error);
+    res.status(422).send(error);
     // res.status(404).send("Not found");
+  }
+});
+
+// update user data
+router.patch("/getdata/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateduser = await users.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    console.log(updateduser);
+    res.status(201).json(updateduser);
+  } catch (error) {
+    res.status(422).json(error)
   }
 });
 
