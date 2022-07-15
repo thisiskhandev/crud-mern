@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
     const preuser = await users.findOne({ email: email });
     console.log(preuser);
     if (preuser) {
-      res.status(422).send("this user is already present!");
+      res.status(422).send("this user's mail is already present!");
     } else {
       // if user is first time filling the data
       const adduser = new users({ name, email, mobile });
@@ -68,7 +68,19 @@ router.patch("/updateuser/:id", async (req, res) => {
     console.log(updateduser);
     res.status(201).json(updateduser);
   } catch (error) {
-    res.status(422).json(error)
+    res.status(422).json(error);
+  }
+});
+
+// delete user
+router.delete("/deleteuser/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteuser = await users.findByIdAndDelete({ _id: id });
+    console.log(deleteuser);
+    res.status(201).json(deleteuser);
+  } catch (error) {
+    res.status(422).json(error);
   }
 });
 
