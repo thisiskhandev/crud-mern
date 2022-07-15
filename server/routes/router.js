@@ -59,7 +59,7 @@ router.get("/getdata/:id", async (req, res) => {
 });
 
 // update user data
-router.patch("/getdata/:id", async (req, res) => {
+router.patch("/updateuser/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const updateduser = await users.findByIdAndUpdate(id, req.body, {
