@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
     const preuser = await users.findOne({ email: email });
     console.log(preuser);
     if (preuser) {
-      res.status(422).send("this user's mail is already present!");
+      res.status(422).json("this user's mail is already present!");
     } else {
       // if user is first time filling the data
       const adduser = new users({ name, email, mobile });
@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
       console.log(adduser);
     }
   } catch (error) {
-    res.status(422).send(error);
+    res.status(422).json(error);
   }
 });
 
