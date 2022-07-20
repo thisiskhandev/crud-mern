@@ -4,7 +4,7 @@ const Register = () => {
   const [inpval, setInpval] = useState({
     name: "",
     email: "",
-    number: "",
+    mobile: "",
   });
 
   const setData = (e) => {
@@ -20,7 +20,7 @@ const Register = () => {
 
   const addinpdata = async (e) => {
     e.preventDefault();
-    const { name, email, number } = inpval;
+    const { name, email, mobile } = inpval;
     const res = await fetch("/register", {
       method: "POST",
       headers: {
@@ -29,7 +29,7 @@ const Register = () => {
       body: JSON.stringify({
         name,
         email,
-        number,
+        mobile,
       }),
     });
 
@@ -46,8 +46,8 @@ const Register = () => {
   return (
     <>
       <main className="container mx-auto px-5">
+      <form method="POST">
         <div className="form-control">
-          <form action="">
             <section className="grid md:grid-cols-3 sm:grid-cols-1 gap-4">
               <div>
                 <label className="input-group">
@@ -80,24 +80,24 @@ const Register = () => {
                   <span>Mobile</span>
                   <input
                     type="number"
-                    name="number"
-                    placeholder="Phone Number"
+                    name="mobile"
+                    placeholder="Phone mobile"
                     className="input input-bordered w-full"
                     onChange={setData}
-                    value={inpval.number}
+                    value={inpval.mobile}
                   />
                 </label>
               </div>
             </section>
             <button
-              className="btn btn-outline btn-primary mt-5 w-52 mx-auto"
+              className="btn btn-outline btn-primary mt-5 w-52 mx-auto text-center block"
               onClick={addinpdata}
               type="submit"
             >
               Submit
             </button>
+            </div>
           </form>
-        </div>
       </main>
     </>
   );

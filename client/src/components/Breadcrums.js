@@ -6,7 +6,7 @@ const Breadcrums = () => {
   location = location.pathname
     .replaceAll("/", "")
     .replace(new RegExp("[0-9]", "g"), "");
-  console.log(location);
+  // console.log(location);
   return (
     <>
       <main className="container mx-auto px-5 my-5">
