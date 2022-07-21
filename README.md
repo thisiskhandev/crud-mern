@@ -6,6 +6,3 @@ nodemon start
 
 #FRONT END RUN (Go into client folder and use this command) <br>
 npm start
-
-//////////////
-Emtpy form can't be filled getting error in REGISTER
