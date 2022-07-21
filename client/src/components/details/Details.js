@@ -2,10 +2,11 @@ import { FaUserCircle, FaEnvelope } from "react-icons/fa";
 import { AiFillMobile, AiFillDelete } from "react-icons/ai";
 import { TbEdit } from "react-icons/tb";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 
 const Details = () => {
   const { id } = useParams();
+  let navigate = useNavigate();
   // console.log(id);
   const [userData, setUserData] = useState([]);
   const getUserData = async () => {
@@ -21,6 +22,25 @@ const Details = () => {
     } else {
       setUserData(data);
       console.table(data);
+    }
+  };
+
+  const deleteUser = async (id) => {
+    const res = await fetch(`/deleteuser/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
+
+    const deleteData = await res.json();
+    // console.log(deleteData);
+
+    if (res.status === 422 || !deleteData) {
+      console.log("ERROR!!!");
+    } else {
+      console.log(`User ${deleteData.name} has been deleted!`);
+      navigate("/");
     }
   };
 
@@ -51,10 +71,15 @@ const Details = () => {
             </h3>
           </div>
           <div className="flex items-end flex-col ml-5 w-full">
-            <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-secondary hover:bg-secondary-focus">
-              <TbEdit />
-            </button>
-            <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-red-600 hover:bg-red-700">
+            <NavLink to={`/edit/${userData._id}`}>
+              <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-secondary hover:bg-secondary-focus">
+                <TbEdit />
+              </button>
+            </NavLink>
+            <button
+              onClick={() => deleteUser(userData._id)}
+              className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-red-600 hover:bg-red-700"
+            >
               <AiFillDelete />
             </button>
           </div>
