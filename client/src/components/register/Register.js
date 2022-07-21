@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  let navigate = useNavigate();
   const [inpval, setInpval] = useState({
     name: "",
     email: "",
@@ -41,13 +43,14 @@ const Register = () => {
       console.log("error fill data!");
     } else {
       alert("data added!");
+      navigate("/");
     }
   };
   return (
     <>
       <main className="container mx-auto px-5">
-      <form method="POST">
-        <div className="form-control">
+        <form method="POST">
+          <div className="form-control">
             <section className="grid md:grid-cols-3 sm:grid-cols-1 gap-4">
               <div>
                 <label className="input-group">
@@ -96,8 +99,8 @@ const Register = () => {
             >
               Submit
             </button>
-            </div>
-          </form>
+          </div>
+        </form>
       </main>
     </>
   );

@@ -23,7 +23,7 @@ const Breadcrums = () => {
             </li>
           </ul>
         </div>
-        <h1 className="capitalize my-5">{location}</h1>
+        {/* <h1 className="capitalize my-5">{location}</h1> */}
       </main>
     </>
   );
