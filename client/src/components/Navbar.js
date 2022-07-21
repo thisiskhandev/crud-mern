@@ -6,44 +6,30 @@ const Navbar = () => {
     <>
       <div className="navbar bg-base-100 drop-shadow mb-5">
         <div className="flex-1">
-          <NavLink to="/" className="btn btn-ghost text-xl">crud</NavLink>
+          <NavLink to="/" className="btn btn-ghost text-xl">
+            crud
+          </NavLink>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <NavLink to="/register/" activeclass="active_nav">Register</NavLink>
+              <NavLink to="/register" activeclass="active_nav">
+                Register
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/edit/1" activeclass="active_nav">Edit</NavLink>
+              <NavLink to="/edit/1" activeclass="active_nav">
+                Edit
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/view/1" activeclass="active_nav">Details</NavLink>
-            </li>
-            <li tabIndex="0">
-              <a>
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2 bg-base-200">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <NavLink to="/view" activeclass="active_nav">
+                View All
+              </NavLink>
             </li>
           </ul>
         </div>
-        <label className="swap swap-rotate">
+        <label className="swap swap-rotate ml-5">
           <input
             type="checkbox"
             id="toggleBtn"
