@@ -18,11 +18,6 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/edit/1">
-                Edit
-              </NavLink>
-            </li>
-            <li>
               <NavLink to="/view" end>
                 View All
               </NavLink>

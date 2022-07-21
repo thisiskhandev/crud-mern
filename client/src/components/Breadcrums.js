@@ -3,24 +3,29 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const Breadcrums = () => {
   let location = useLocation();
-  location = location.pathname
-    .replaceAll("/", "")
-    .replace(new RegExp("[0-9]", "g"), "");
-  // console.log(location);
+  // let navigate = useNavigate();
+  // location = location.pathname
+  //   .replaceAll("/", "")
+  //   .replace(new RegExp("[0-9]", "g"), "");
+  let RegExp = /abc/g;
+  location = location.pathname.replace(RegExp, "");
+  console.log(location);
   return (
     <>
       <main className="container mx-auto px-5 my-5">
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
-              <a>Home</a>
+              <NavLink to="/" className="underline">
+                Home
+              </NavLink>
             </li>
             <li>
-              <a>Documents</a>
+              <NavLink to="/view" className="underline">
+                View All
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/">Add Document</NavLink>
-            </li>
+            <li>Add Document</li>
           </ul>
         </div>
         {/* <h1 className="capitalize my-5">{location}</h1> */}
