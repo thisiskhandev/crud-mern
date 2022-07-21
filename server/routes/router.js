@@ -11,7 +11,7 @@ router.post("/register", async (req, res) => {
   //   console.log(req.body);
   const { name, email, mobile } = req.body;
   if (!name || !email || !mobile) {
-    res.status(422).send("please fill the data");
+    res.status(422).json("BACKEND: please fill the data");
   }
   try {
     // if user is available
@@ -77,8 +77,8 @@ router.delete("/deleteuser/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deleteuser = await users.findByIdAndDelete({ _id: id });
-    console.log(deleteuser);
     res.status(201).json(deleteuser);
+    console.log(deleteuser);
   } catch (error) {
     res.status(422).json(error);
   }

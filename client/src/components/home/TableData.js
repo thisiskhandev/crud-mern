@@ -27,6 +27,26 @@ const TableData = () => {
     }
   };
 
+  const deleteUser = async (id) => {
+    const res = await fetch(`/deleteuser/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
+
+    const deleteData = await res.json();
+    // console.log(deleteData);
+
+    if (res.status === 422 || !deleteData) {
+      console.log("ERROR!!!");
+    } else {
+      console.log(`User ${deleteData.name} has been deleted!`);
+      // It will refresh the page
+      getUserData();
+    }
+  };
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -63,7 +83,11 @@ const TableData = () => {
                         <TbEdit />
                       </button>
                     </NavLink>
-                    <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-red-600 hover:bg-red-700">
+
+                    <button
+                      onClick={() => deleteUser(val._id)}
+                      className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-red-600 hover:bg-red-700"
+                    >
                       <AiFillDelete />
                     </button>
                   </td>

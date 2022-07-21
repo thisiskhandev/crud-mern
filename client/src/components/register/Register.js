@@ -38,8 +38,8 @@ const Register = () => {
     const data = await res.json();
     console.log(data);
     // agar status 404 ha ya data nhi mil raha
-    if (res.status === 404 || !data) {
-      alert("error fill data!");
+    if (res.status === 422 || !data) {
+      alert("Data is empty please fill!");
       console.log("error fill data!");
     } else {
       alert("data added!");
