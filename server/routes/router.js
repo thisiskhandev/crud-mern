@@ -10,10 +10,12 @@ const users = require("../models/userSchema");
 router.post("/register", async (req, res) => {
   //   console.log(req.body);
   const { name, email, mobile } = req.body;
-  if (!name || !email || !mobile) {
-    res.status(422).json("BACKEND: please fill the data");
-  }
+
   try {
+    if (!name || !email || !mobile) {
+      res.status(422).json("BACKEND: please fill the data");
+      return;
+    }
     // if user is available
     // aik database wala email ha dusra wala jo humne bheja ha
     const preuser = await users.findOne({ email: email });
