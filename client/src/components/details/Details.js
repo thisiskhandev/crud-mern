@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Details = () => {
-  const { id } = useParams("");
+  const { id } = useParams();
   // console.log(id);
   const [userData, setUserData] = useState([]);
   const getUserData = async () => {
@@ -30,7 +30,7 @@ const Details = () => {
   return (
     <>
       <main className="container px-5 mx-auto">
-        <h2 className="mb-10 text-xl font-semibold text-slate-400">
+        <h2 className="mb-10 text-xl font-semibold text-slate-400 capitalize">
           Welcome {userData.name}
         </h2>
         <div className="flex items-center text-xl shadow p-5">

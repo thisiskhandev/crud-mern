@@ -13,17 +13,17 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <NavLink to="/register" activeclass="active_nav">
+              <NavLink to="/register">
                 Register
               </NavLink>
             </li>
             <li>
-              <NavLink to="/edit/1" activeclass="active_nav">
+              <NavLink to="/edit/1">
                 Edit
               </NavLink>
             </li>
             <li>
-              <NavLink to="/view" activeclass="active_nav">
+              <NavLink to="/view" end>
                 View All
               </NavLink>
             </li>

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
+  let navigate = useNavigate();
+  const { id } = useParams();
   const [inpval, setInpval] = useState({
     name: "",
     email: "",
@@ -16,6 +19,51 @@ const Edit = () => {
       };
     });
   };
+  const getUserData = async () => {
+    const res = await fetch(`/getdata/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
+    const data = await res.json();
+
+    if (!data || res.status === 404) {
+      console.log("not found data");
+    } else {
+      console.log("Edit page - data found!");
+      setInpval(data);
+    }
+  };
+
+  const updateUser = async (e) => {
+    e.preventDefault();
+    const { name, email, mobile } = inpval;
+    const res = await fetch(`/updateuser/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        mobile,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (res.status === 422) {
+      alert("fill the data");
+    } else {
+      alert("date updated!");
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
   return (
     <>
       <main className="container mx-auto px-5">
@@ -56,12 +104,17 @@ const Edit = () => {
                   placeholder="Phone Number"
                   className="input input-bordered w-full"
                   onChange={setData}
-                  value={inpval.number}
+                  value={inpval.mobile}
                 />
               </label>
             </div>
           </section>
-          <button className="btn btn-primary mt-5 w-52 mx-auto">Update</button>
+          <button
+            className="btn btn-primary mt-5 w-52 mx-auto"
+            onClick={updateUser}
+          >
+            Update
+          </button>
         </div>
       </main>
     </>

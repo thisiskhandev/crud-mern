@@ -58,9 +58,11 @@ const TableData = () => {
                         <BsEyeFill />
                       </button>
                     </NavLink>
-                    <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-secondary hover:bg-secondary-focus">
-                      <TbEdit />
-                    </button>
+                    <NavLink to={`edit/${val._id}`}>
+                      <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-secondary hover:bg-secondary-focus">
+                        <TbEdit />
+                      </button>
+                    </NavLink>
                     <button className="btn outline-none border-none text-xl lg:mr-3 lg:mt-3 bg-red-600 hover:bg-red-700">
                       <AiFillDelete />
                     </button>
