@@ -46,17 +46,20 @@ const Details = () => {
 
   useEffect(() => {
     getUserData();
-  }, []);
+  });
   return (
     <>
       <main className="container px-5 mx-auto">
         <h2 className="mb-10 text-xl font-semibold text-slate-400 capitalize">
           Welcome {userData.name}
         </h2>
-        <div className="flex items-center text-xl shadow p-5">
+        <div className="flex items-center text-xl shadow-lg p-5">
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="https://placeimg.com/192/192/people" />
+              <img
+                src="https://placeimg.com/192/192/people"
+                alt="client shot"
+              />
             </div>
           </div>
           <div className="ml-10">

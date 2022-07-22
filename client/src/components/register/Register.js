@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { adddata } from "../context/ContextProvider";
 const Register = () => {
+  const [udata, setUdata] = useState(adddata);
   let navigate = useNavigate();
   const [inpval, setInpval] = useState({
     name: "",
@@ -43,6 +44,7 @@ const Register = () => {
       console.log("error fill data!");
     } else {
       alert("data added!");
+      setUdata(data);
       navigate("/");
     }
   };

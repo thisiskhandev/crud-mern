@@ -54,10 +54,10 @@ const Details = () => {
         <section className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
           {userData.map((val, index) => {
             return (
-              <div className="flex items-center text-xl shadow p-5" key={index}>
+              <div className="flex items-center text-xl shadow-lg hover:shadow-xl p-5 transition" key={index}>
                 <div className="avatar">
                   <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src="https://placeimg.com/192/192/people" />
+                    <img src="https://placeimg.com/192/192/people" alt="client shots"/>
                   </div>
                 </div>
                 <div className="ml-10">

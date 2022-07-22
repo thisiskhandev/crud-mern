@@ -30,7 +30,7 @@ const Navbar = () => {
             id="toggleBtn"
             onClick={() => {
               if (document.getElementById("toggleBtn").checked === true) {
-                themeDark.setAttribute("data-theme", "dark");
+                themeDark.setAttribute("data-theme", "halloween");
               } else if (
                 document.getElementById("toggleBtn").checked === false
               ) {
