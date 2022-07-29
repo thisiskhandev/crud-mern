@@ -44,8 +44,8 @@ const Register = () => {
       console.log("error fill data!");
     } else {
       alert("data added!");
-      setUdata(data);
       navigate("/");
+      setUdata(data);
     }
   };
   return (
